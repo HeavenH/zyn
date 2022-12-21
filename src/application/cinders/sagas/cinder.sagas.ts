@@ -16,7 +16,7 @@ export class CinderSagas {
       ofType(CinderKilledDragonEvent),
       delay(1000),
       map((event) => {
-        console.log(clc.redBright('Inside [HeroesGameSagas] Saga'));
+        console.log(clc.whiteBright(`[CinderSagas] - ${CinderKilledDragonEvent.name}`));
         return new AchievementDragonCommand(event.cinderId, itemId);
       }),
     );

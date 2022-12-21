@@ -6,6 +6,7 @@ export class CinderRepository {
 
   async findOneById(id: string): Promise<any> {
 
+
     return new Cinder(id);
   }
 }

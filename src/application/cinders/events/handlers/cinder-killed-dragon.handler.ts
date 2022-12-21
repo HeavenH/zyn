@@ -8,6 +8,6 @@ export class CinderKilledDragonHandler
   implements IEventHandler<CinderKilledDragonEvent>
 {
   handle(event: CinderKilledDragonEvent) {
-    console.log(clc.greenBright('HeroKilledDragonEvent...'));
+    console.log(clc.yellowBright(`[Event] - ${CinderKilledDragonEvent.name}`));
   }
 }

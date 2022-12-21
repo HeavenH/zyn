@@ -13,7 +13,7 @@ export class AddBadgeHandler
   ) {}
 
   async execute(command: AchievementDragonCommand): Promise<any> {
-    console.log(clc.yellowBright('Async DropAncientItemCommand...'));
+    console.log(clc.cyanBright(`[Async Command] - ${AchievementDragonCommand.name}`));
 
     const { badgeId, cinderId } = command;
 

@@ -8,7 +8,18 @@ datasource db {
 }
 
 model Cinder {
-  id        Int      @id @default(autoincrement())
+  id           Int           @id @default(autoincrement())
+  username     String
+  achievements Achievement[]
+
+  @@map(name: "cinder")
+}
+
+model Achievement {
+  id       Int    @id @default(autoincrement())
   name     String
-  createdAt DateTime @default(now())
+  cinder   Cinder @relation(fields: [cinderId], references: [id])
+  cinderId Int
+
+  @@map(name: "achievement")
 }

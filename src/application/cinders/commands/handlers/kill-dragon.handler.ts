@@ -11,7 +11,7 @@ export class KillDragonHandler implements ICommandHandler<KillDragonCommand> {
   ) {}
 
   async execute(command: KillDragonCommand): Promise<any> {
-    console.log(clc.greenBright('KillDragonCommand...'));
+    console.log(clc.cyanBright(`[Command] - ${KillDragonCommand.name}`));
 
     const { dragonId, cinderId } = command;
 
@@ -19,7 +19,7 @@ export class KillDragonHandler implements ICommandHandler<KillDragonCommand> {
       await this.repository.findOneById(cinderId),
     );
 
-    cinder.killEnemy(dragonId);
+    await cinder.killEnemy(dragonId, cinderId);
     cinder.commit();
   }
 }

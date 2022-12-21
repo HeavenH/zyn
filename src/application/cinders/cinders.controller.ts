@@ -1,14 +1,25 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 import { KillDragonCommand } from './commands/impl/kill-dragon.command';
-@Controller('hero')
-export class CindersController {
-  constructor(
-    private readonly commandBus: CommandBus,
-  ) {}
+import { PrismaClient } from '@prisma/client';
 
-  @Post(':id/kill')
-  async killDragon(@Param('id') id: string, @Body() dto: any) {
+@Controller('cinder')
+export class CindersController {
+  constructor(private readonly commandBus: CommandBus) {}
+
+  @Post('kill')
+  async kill(@Param('id') id: string, @Body() dto: any) {
     return this.commandBus.execute(new KillDragonCommand(id, dto.dragonId));
+  }
+
+  @Get('achievements')
+  async getAchievements() {
+    const prisma = new PrismaClient();
+
+    return await prisma.cinder.findMany({
+      include: {
+        achievements: true,
+      },
+    });
   }
 }

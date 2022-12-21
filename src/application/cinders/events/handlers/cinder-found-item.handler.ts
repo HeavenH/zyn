@@ -7,6 +7,6 @@ export class CinderFoundItemHandler
   implements IEventHandler<CinderFoundItemEvent>
 {
   handle(event: CinderFoundItemEvent) {
-    console.log(clc.yellowBright('Async HeroFoundItemEvent...'));
+    console.log(clc.yellowBright('[Async Event] - CinderFoundItemEvent'));
   }
 }
